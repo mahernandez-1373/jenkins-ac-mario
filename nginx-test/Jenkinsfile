@@ -19,8 +19,8 @@ pipeline {
         stage('Build y push de la imagen') {
             steps {
                 script {
-                    withCredentials([file(credentialsId: 'docker-hub-credentials', variable: 'DOCKER_HUB_CREDENTIALS')]) {
-                        writeFile file: '/kaniko/.docker/config.json', text: readFile(DOCKER_HUB_CREDENTIALS)
+                    withCredentials([string(credentialsId: 'otrovalor', variable: 'DOCKER_HUB_CREDENTIALS')]) {
+                        writeFile file: '/kaniko/.docker/config.json', text: "${DOCKER_HUB_CREDENTIALS}"
                         sh """
                             ls -alF /kaniko/.docker/
                             cat /kaniko/.docker/config.json
