@@ -1,0 +1,27 @@
+pipeline {
+    agent {
+        dockerContainer { 
+            image 'jenkins/inbound-agent:latest-jdk17'  
+        }
+    }
+    stages {
+        stage('Primer Stage') {
+            steps {
+                script {
+                    sh """
+                        echo Hello World!
+                    """
+                }
+            }
+        }
+        stage('Segundo Stage') {
+            steps {
+                script {
+                    sh """
+                        echo Segunda parte
+                    """
+                }
+            }
+        }
+    }
+}
