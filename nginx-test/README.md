@@ -28,7 +28,9 @@ De esta forma:
 echo -n {nombre_de_usuario}:{password} | base64
 ```
 
-- Con este archivo, vamos a Jenkins y creamos un secreto de tipo archivo con el nombre `docker-hub-credentials`
+- Con este archivo, vamos a Jenkins y creamos un secreto de tipo String con el nombre `docker-hub-credentials`
+
+NOTA: El secreto tiene que ser de tipo string, por que parece que existe un problema cuando se genera el secreto de tipo File y genera un secreto vacio.
 
 
 y listo, estamos listos.
