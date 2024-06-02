@@ -1,0 +1,37 @@
+version: "3.3"
+
+services:
+  jenkins:
+    image: jenkins/jenkins:2.452.1-lts
+    container_name: jenkins
+    restart: always
+    privileged: true
+    ports:
+      - "9090:8080"
+      - "50000:50000"
+    networks:
+      - jenkins-net
+    volumes:
+      - jenkins_data:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+      - docker_certs:/certs/client:ro
+  socat:
+    image: alpine/socat:latest
+    container_name: alpine-socat
+    restart: always
+    command: tcp-listen:2375,fork,reuseaddr unix-connect:/var/run/docker.sock
+    networks:
+      - jenkins-net
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    expose:
+      - "2375"
+
+networks:
+  jenkins-net:
+    driver: bridge
+
+volumes:
+  jenkins_data: {}
+  docker_certs: {}
+
