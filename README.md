@@ -23,8 +23,8 @@ docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
 ```
 
 - Despues, es necesario instalar 2 plugins:
-- - en `Cloud Providers` instalar `docker` URL: https://plugins.jenkins.io/docker-plugin/
-- - `configurations as code` URL: https://plugins.jenkins.io/configuration-as-code/
+ - en `Cloud Providers` instalar `docker` URL: https://plugins.jenkins.io/docker-plugin/
+ - `configurations as code` URL: https://plugins.jenkins.io/configuration-as-code/
 
 NOTA: cada vez que se instala un plugin es necesario reiniciar el jenkins.
 
