@@ -22,7 +22,7 @@ pipeline {
                     withCredentials([string(credentialsId: 'docker-hub-credentials', variable: 'DOCKER_HUB_CREDENTIALS')]) {
                         writeFile file: '/kaniko/.docker/config.json', text: "${DOCKER_HUB_CREDENTIALS}"
                         sh """
-                            /kaniko/executor --dockerfile ${WORKSPACE}/nginx-test/Dockerfile --destination=${DOCKER_HUB_REPOSITORY}/nginx-test:${VERSION} --context=${WORKSPACE}/nginx-test/
+                            /kaniko/executor --log-format=text --cache=false --dockerfile ${WORKSPACE}/nginx-test/Dockerfile --destination=${DOCKER_HUB_REPOSITORY}/nginx-test:${VERSION} --context=${WORKSPACE}/nginx-test/
                         """
                     }
                 }
