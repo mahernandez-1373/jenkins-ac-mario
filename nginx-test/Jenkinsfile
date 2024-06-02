@@ -22,7 +22,7 @@ pipeline {
                     withCredentials([file(credentialsId: 'docker-hub-credentials', variable: 'DOCKER_HUB_CREDENTIALS')]) {
                         sh """
                             whoami
-                            cat ${DOCKER_HUB_CREDENTIALS} /kaniko/.docker/config.json 
+                            cat ${DOCKER_HUB_CREDENTIALS} > /kaniko/.docker/config.json 
                             ls -alF /kaniko/.docker/
                             cat /kaniko/.docker/config.json
                             /kaniko/executor --dockerfile ${WORKSPACE}/nginx-test/Dockerfile --destination=${DOCKER_HUB_REPOSITORY}/nginx-test:${VERSION} --context=${WORKSPACE}/nginx-test/
