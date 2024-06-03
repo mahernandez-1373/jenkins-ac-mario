@@ -41,3 +41,19 @@ jenkins:
         removeVolumes: true
         retentionStrategy:
           idleMinutes: 1
+      - connector:
+          jnlp:
+            jenkinsUrl: "http://jenkins:8080"
+            user: "root"
+        dockerTemplateBase:
+          cpuPeriod: 0
+          cpuQuota: 0
+          image: "quinont/jenkinspython3_8builder:1"
+          network: "jenkins-academy_jenkins-net"
+          user: "root"
+        labelString: "python3 python38 python"
+        name: "python3build"
+        pullTimeout: 300
+        removeVolumes: true
+        retentionStrategy:
+          idleMinutes: 1
