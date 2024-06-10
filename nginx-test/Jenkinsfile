@@ -4,7 +4,7 @@ pipeline {
     }
     environment {
         VERSION = '${BUILD_TAG}'
-        DOCKER_HUB_REPOSITORY = 'quinont'
+        DOCKER_HUB_REPOSITORY = 'Mayito7313'
     }
     stages {
         stage('Revisando contenido') {
